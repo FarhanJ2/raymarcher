@@ -15,12 +15,12 @@ int main() {
     int total = 0;
     FILE *fptr = fopen("output.ppm", "w");
 
-    if (fptr != NULL) {
+    if (fptr != NULL) { // make it stretch across 2d 
         fprintf(fptr, "P3\n%d %d\n255\n", width, height);
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 total +=1;
-                fprintf(fptr, "%d %d %d\n", (int)lerp(total, 255, 0, width * height), 0, (int)lerp(total, 0, 255, (float)(width * height)));
+                fprintf(fptr, "%d %d %d\n", (int)lerp(j, 255, 0, width), 0, (int)lerp(i, 0, 255, (float)height));
             }
         }
         fclose(fptr);
